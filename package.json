@@ -1,0 +1,149 @@
+{
+	"name": "vscode-dynamic-theme",
+	"displayName": "Dynamic Theme (Material)",
+	"description": "Generate a dynamic theme based on Material Design for the current theme.",
+	"publisher": "rodydavis",
+	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rodydavis/vscode-dynamic-theme"
+	},
+	"bugs": {
+		"url": "https://github.com/rodydavis/vscode-dynamic-theme/issues",
+		"email": "rody.davis.jr@gmail.com"
+	},
+	"homepage": "https://github.com/rodydavis/vscode-dynamic-theme/blob/main/README.md",
+	"engines": {
+		"vscode": "^1.63.0"
+	},
+	"author": {
+		"name": "Rody Davis"
+	},
+	"preview": true,
+	"categories": [
+		"Snippets",
+		"Other"
+	],
+	"license": "SEE LICENSE",
+	"activationEvents": [
+		"onCommand:dynamic-theme.theme-from-hex",
+		"onCommand:dynamic-theme.theme-from-color",
+		"onCommand:dynamic-theme.theme-from-random"
+	],
+	"browser": "./dist/web/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "dynamic-theme.theme-from-color",
+				"title": "Generate Theme from CSS Color"
+			},
+			{
+				"command": "dynamic-theme.theme-from-hex",
+				"title": "Generate Theme from HEX Color"
+			},
+			{
+				"command": "dynamic-theme.theme-from-random",
+				"title": "Generate Theme from Random Color"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Material Theme",
+			"properties": {
+				"dynamic-theme.info": {
+					"type": "string",
+					"default": "#2196F3",
+					"description": "info color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.warning": {
+					"type": "string",
+					"default": "#FFB300",
+					"description": "warning color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.comment": {
+					"type": "string",
+					"default": "#5dd824",
+					"description": "comment color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.string": {
+					"type": "string",
+					"default": "#e77c4e",
+					"description": "string color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.type": {
+					"type": "string",
+					"default": "#4dacfa",
+					"description": "type color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.keyword": {
+					"type": "string",
+					"default": "#f73653",
+					"description": "keyword color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.number": {
+					"type": "string",
+					"default": "#0777d3",
+					"description": "number color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.function": {
+					"type": "string",
+					"default": "#9151eb",
+					"description": "function color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.variable": {
+					"type": "string",
+					"default": "#e5e9ec",
+					"description": "variable color to blend",
+					"scope": "window"
+				},
+				"dynamic-theme.seed": {
+					"type": "string",
+					"default": "#6750A4",
+					"description": "Current seed color selected",
+					"scope": "window"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"test": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. --extensionTestsPath=dist/web/test/suite/index.js",
+		"pretest": "npm run compile-web",
+		"vscode:prepublish": "npm run package-web",
+		"compile-web": "webpack",
+		"watch-web": "webpack --watch",
+		"package-web": "webpack --mode production --devtool hidden-source-map",
+		"lint": "eslint src --ext ts",
+		"run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. .",
+		"package": "vsce package"
+	},
+	"devDependencies": {
+		"@types/mocha": "^9.0.0",
+		"@types/vscode": "^1.63.0",
+		"@types/webpack-env": "^1.16.3",
+		"@typescript-eslint/eslint-plugin": "^5.9.1",
+		"@typescript-eslint/parser": "^5.9.1",
+		"@vscode/test-web": "^0.0.15",
+		"assert": "^2.0.0",
+		"eslint": "^8.6.0",
+		"mocha": "^9.1.3",
+		"process": "^0.11.10",
+		"ts-loader": "^9.2.6",
+		"typescript": "^4.5.4",
+		"vsce": "^2.6.3",
+		"webpack": "^5.66.0",
+		"webpack-cli": "^4.9.1"
+	},
+	"dependencies": {
+		"@guidezpl/material-color-utilities": "^0.1.23",
+		"buffer": "^6.0.3",
+		"css-color-names": "^1.0.1"
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"outDir": "dist",
+		"lib": [
+			"es6",
+			"WebWorker"
+		],
+		"sourceMap": true,
+		"rootDir": "src",
+		"strict": true,
+		"esModuleInterop": true,
+		"allowUnreachableCode": false,
+		"noUnusedLocals": true,
+		"importHelpers": true,
+		"noUnusedParameters": true,
+		"skipLibCheck": true,
+		"noImplicitAny": true,
+		"resolveJsonModule": true,
+	},
+	"include": [
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+	]
+}

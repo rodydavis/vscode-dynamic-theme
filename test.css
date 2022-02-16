@@ -1,0 +1,11 @@
+body {
+  --Info: #0e91fc;
+  --Warning: #ffb300;
+  --Comment: #5dd824;
+  --String: #e77c4e;
+  --Type: #4dacfa;
+  --Keyword: #f73653;
+  --Number: #0777d3;
+  --Function: #9151eb;
+  --Variable: #e5e9ec;
+}
