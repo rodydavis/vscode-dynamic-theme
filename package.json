@@ -3,7 +3,7 @@
 	"displayName": "Dynamic Theme (Material)",
 	"description": "Generate a dynamic theme based on Material Design for the current theme.",
 	"publisher": "rodydavis",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/rodydavis/vscode-dynamic-theme"

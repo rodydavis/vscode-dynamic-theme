@@ -1,3 +1,7 @@
-## 0.0.1
+## 1.0.0
 
-- Initial Release
+Adding Commands:
+
+- Generate Theme from CSS Color
+- Generate Theme from HEX Color
+- Generate Theme from Random Color
