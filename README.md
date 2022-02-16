@@ -7,3 +7,9 @@ Generate a dynamic theme based on Material Design for the current theme.
 - Generate Theme from CSS Color
 - Generate Theme from HEX Color
 - Generate Theme from Random Color
+
+## Screenshots
+
+![](/screenshots/purple.png)
+![](/screenshots/blue.png)
+![](/screenshots/orange.png)
