@@ -42,16 +42,20 @@ export async function saveTheme(seed: string) {
 
   const settings = _config.get("dynamic-theme", defaultSettings);
 
+  const getSetting = (key: string) => {
+    return Object(settings)[key] || Object(defaultSettings)[key] || "#000000";
+  };
+
   const extraColors = [
-    addCustom("Info", settings?.info || defaultSettings.info),
-    addCustom("Warning", settings?.warning || defaultSettings.warning),
-    addCustom("Comment", settings?.comment || defaultSettings.comment),
-    addCustom("String", settings?.string || defaultSettings.string),
-    addCustom("Type", settings?.type || defaultSettings.type),
-    addCustom("Keyword", settings?.keyword || defaultSettings.keyword),
-    addCustom("Number", settings?.number || defaultSettings.number),
-    addCustom("Function", settings?.function || defaultSettings.function),
-    addCustom("Variable", settings?.variable || defaultSettings.variable),
+    addCustom("Info", getSetting("info")),
+    addCustom("Warning", getSetting("warning")),
+    addCustom("Comment", getSetting("comment")),
+    addCustom("String", getSetting("string")),
+    addCustom("Type", getSetting("type")),
+    addCustom("Keyword", getSetting("keyword")),
+    addCustom("Number", getSetting("number")),
+    addCustom("Function", getSetting("function")),
+    addCustom("Variable", getSetting("variable")),
   ];
 
   const theme = themeFromSeed(argbFromHex(seed), extraColors);
@@ -70,7 +74,7 @@ export async function saveTheme(seed: string) {
     primary,
     onPrimary,
     primaryContainer,
-    // onPrimaryContainer,
+    onPrimaryContainer,
     secondary,
     onSecondary,
     secondaryContainer,
@@ -328,6 +332,15 @@ export async function saveTheme(seed: string) {
   // Extensions colors
 
   // Quick picker colors
+  addColor("pickerGroup.border", outline, { contrast: true });
+  addColor("pickerGroup.foreground", onSurface);
+  addColor("quickInput.background", surface);
+  addColor("quickInput.foreground", onSurface);
+  addColor("quickInputList.focusBackground", primaryContainer);
+  addColor("quickInputList.focusForeground", onPrimaryContainer);
+  addColor("quickInputList.focusIconForeground", onPrimaryContainer);
+  addColor("quickInputTitle.background", surface);
+  
   // "quickInput.background": "#263238",
   // "quickInput.foreground": "#607a86",
   // "list.hoverForeground": "#FFFFFF",
@@ -365,6 +378,13 @@ export async function saveTheme(seed: string) {
   // Testing colors
 
   // Welcome page colors
+  addColor("welcomePage.background", surface);
+  addColor("welcomePage.progress.background", primaryContainer);
+  addColor("welcomePage.progress.foreground", primary);
+  addColor("welcomePage.tileBackground", surfaceVariant);
+  addColor("welcomePage.tileHoverBackground", inversePrimary);
+  addColor("welcomePage.tileShadow", shadow);
+  addColor("walkThrough.embeddedEditorBackground", surface);
 
   // Source Control colors
 
