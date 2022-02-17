@@ -1,6 +1,10 @@
-import { argbFromHex, hexFromArgb } from "@guidezpl/material-color-utilities";
 import * as vscode from "vscode";
-import { themeFromSeed } from "./theme-utils";
+import {
+  argbFromHex,
+  hexFromArgb,
+  themeFromSourceColor,
+  CustomColor,
+} from "@material/material-color-utilities";
 
 interface Token {
   scope: string;
@@ -22,28 +26,19 @@ export async function saveTheme(seed: string) {
 
   _config.update("dynamic-theme.seed", seed, true);
 
-  const addCustom = (label: string, value: string) => ({
+  const addCustom: (label: string, value: string) => CustomColor = (
+    label,
+    value
+  ) => ({
     name: label,
     value: argbFromHex(value),
     blend: true,
   });
 
-  const defaultSettings = {
-    info: "#2196F3",
-    warning: "#FFB300",
-    comment: "#5dd824",
-    string: "#e77c4e",
-    type: "#4dacfa",
-    keyword: "#f73653",
-    number: "#0777d3",
-    function: "#9151eb",
-    variable: "#e5e9ec",
-  };
-
-  const settings = _config.get("dynamic-theme", defaultSettings);
+  const settings = _config.get("dynamic-theme", {});
 
   const getSetting = (key: string) => {
-    return Object(settings)[key] || Object(defaultSettings)[key] || "#000000";
+    return Object(settings)[key] || "#000000";
   };
 
   const extraColors = [
@@ -58,7 +53,7 @@ export async function saveTheme(seed: string) {
     addCustom("Variable", getSetting("variable")),
   ];
 
-  const theme = themeFromSeed(argbFromHex(seed), extraColors);
+  const theme = themeFromSourceColor(argbFromHex(seed), extraColors);
   const scheme = isDark ? theme.schemes.dark : theme.schemes.light;
   const customColors = theme.customColors;
 
@@ -340,12 +335,6 @@ export async function saveTheme(seed: string) {
   addColor("quickInputList.focusForeground", onPrimaryContainer);
   addColor("quickInputList.focusIconForeground", onPrimaryContainer);
   addColor("quickInputTitle.background", surface);
-  
-  // "quickInput.background": "#263238",
-  // "quickInput.foreground": "#607a86",
-  // "list.hoverForeground": "#FFFFFF",
-  // "list.inactiveSelectionForeground": "#80CBC4",
-  // "quickInput.list.focusBackground": "#EEFFFF20",
 
   // Keybinding label colors
 
