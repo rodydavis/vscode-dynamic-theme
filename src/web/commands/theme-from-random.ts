@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
-import { saveTheme } from "../utils/save-theme";
+import { setTheme } from "../utils/set-theme";
+import { randomColor } from "../utils/random-color";
 
 export async function themeFromRandom() {
   const seed = randomColor();
@@ -15,14 +16,5 @@ export async function themeFromRandom() {
     return;
   }
 
-  saveTheme(seed);
-}
-
-function randomColor() {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
+  setTheme(seed);
 }

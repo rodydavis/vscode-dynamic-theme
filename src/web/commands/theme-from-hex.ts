@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { saveTheme } from "../utils/save-theme";
+import { setTheme } from "../utils/set-theme";
 
 export async function themeFromHex() {
   const seed = await vscode.window.showInputBox({
@@ -18,5 +18,5 @@ export async function themeFromHex() {
     return;
   }
 
-  saveTheme(seed);
+  setTheme(seed);
 }

@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { saveTheme } from "../utils/save-theme";
+import { setTheme } from "../utils/set-theme";
 import csscolors from "css-color-names";
 
 export async function themeFromColor() {
@@ -176,5 +176,5 @@ export async function themeFromColor() {
     return;
   }
 
-  saveTheme(seed);
+  setTheme(seed);
 }
