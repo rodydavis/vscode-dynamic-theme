@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fix for non contrast themes
+
 ## 1.1.0
 
 - Migrating to new Material 3 surfaces

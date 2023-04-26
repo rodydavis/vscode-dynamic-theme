@@ -47,12 +47,6 @@ export async function setTheme(seed: string) {
 
     let contrast = 0;
 
-    if (isHighContrast) {
-        contrast = 1;
-    } else if (isLowContrast) {
-        contrast = -1;
-    }
-
     if (isCustomContrast) {
         const level = await vscode.window.showInputBox({
             title: 'Enter a contrast level between -1 and 1',
@@ -63,6 +57,10 @@ export async function setTheme(seed: string) {
                 contrast = target;
             }
         }
+    } else if (isHighContrast) {
+        contrast = 1;
+    } else if (isLowContrast) {
+        contrast = -1;
     }
 
     const _config = ws.getConfiguration();
